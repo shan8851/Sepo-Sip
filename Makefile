@@ -17,7 +17,7 @@ build:
 # Run tests for smart contracts
 test:
 	@echo "Running smart contract tests..."
-	@forge test -C $(CONTRACTS_DIR)
+	@cd $(CONTRACTS_DIR) && forge test
 
 # Deploy to local network (if local node is running)
 deploy-local:
