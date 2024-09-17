@@ -1,5 +1,8 @@
 # Makefile for SEPO-SIP project
 
+include .env
+export
+
 # Variables
 CONTRACTS_DIR := contracts
 
