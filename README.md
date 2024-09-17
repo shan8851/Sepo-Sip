@@ -24,10 +24,11 @@ sepo-sip/
 │   └── lib/              # Dependencies (e.g., OpenZeppelin)
 ├── frontend/             # Frontend application (to be implemented)
 ├── .github/              # GitHub-specific files (e.g., workflows)
+├── .env.example          # Example environment file
 ├── .solhint.json         # Solidity linter configuration
 ├── .solhintignore        # Solidity linter ignore file
 ├── Makefile              # Project-wide task runner
-└── README.md             # This file
+└── README.md             # Project documentation
 ```
 
 ## Getting Started
@@ -46,6 +47,16 @@ sepo-sip/
    ```
    make test
    ```
+
+## Environment Setup
+
+1. Copy `.env.example` to `.env`:
+   ```
+   cp .env.example .env
+   ```
+2. Fill in your own values in the `.env` file.
+
+Note: Never commit your `.env` file .
 
 ## Contributing
 
