@@ -11,7 +11,7 @@ export interface IStatProps {
 }
 
 const Box: React.FC<PropsWithChildren> = ({ children }) => (
-  <div className="h-48 w-64 bg-slate-800 flex items-center justify-center rounded-lg">
+  <div className="h-48 w-64 bg-neutral-800 flex items-center justify-center rounded-lg">
     {children}
   </div>
 );

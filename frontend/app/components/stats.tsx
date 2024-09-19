@@ -1,76 +1,49 @@
 'use client';
-import contractABI from '../abi.json';
-import { useReadContract } from 'wagmi';
-import { formatEther } from 'viem';
+import { useEffect } from 'react';
 import { Stat } from './stats/stat';
 import { FaEthereum, FaServer } from 'react-icons/fa';
 import { FaPeopleGroup } from 'react-icons/fa6';
+import { useStatsStore } from '../stores/statsStore';
 
 export const Stats = () => {
   const {
-    data: totalFunds,
-    isError: totalFundsError,
-    isLoading: totalFundsLoading,
-  } = useReadContract({
-    abi: contractABI,
-    address: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as `0x${string}`,
-    functionName: 'getTotalFaucetFunds',
-  });
-
-  const {
-    data: donators,
-    isError: donatorsError,
-    isLoading: donatorsLoading,
-  } = useReadContract({
-    abi: contractABI,
-    address: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as `0x${string}`,
-    functionName: 'getTotalDonators',
-  });
-
-  const {
-    data: requests,
-    isError: requestsError,
-    isLoading: requestsLoading,
+    totalFunds,
+    totalDonators,
+    totalRequests,
+    fetchStats,
+    isLoading,
     error,
-  } = useReadContract({
-    abi: contractABI,
-    address: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as `0x${string}`,
-    functionName: 'getTotalPayouts',
-  });
+  } = useStatsStore();
 
-  // Format the data
-  const formattedTotalFunds = totalFunds
-    ? formatEther(totalFunds as bigint)
-    : '0';
-  const formattedDonators = donators ? donators.toString() : '0';
-  const formattedRequests = requests ? requests.toString() : '0';
+  useEffect(() => {
+    fetchStats();
+  }, [fetchStats]);
 
   const iconClass = 'text-6xl text-red-400';
 
-  console.debug(requests, requestsError, requestsLoading, error);
+  if (error) {
+    return <div>Error loading stats: {error.message}</div>;
+  }
 
   return (
     <div className="flex gap-8 justify-center">
       <Stat
         icon={<FaEthereum className={iconClass} />}
         title="Faucet Balance"
-        value={formattedTotalFunds}
-        error={totalFundsError}
-        loading={totalFundsLoading}
+        value={totalFunds}
+        loading={isLoading}
       />
       <Stat
         icon={<FaPeopleGroup className={iconClass} />}
         title="Total Donators"
-        value={formattedDonators}
-        error={donatorsError}
-        loading={donatorsLoading}
+        value={totalDonators}
+        loading={isLoading}
       />
       <Stat
         icon={<FaServer className={iconClass} />}
         title="Total Requests"
-        value={formattedRequests}
-        error={requestsError}
-        loading={requestsLoading}
+        value={totalRequests}
+        loading={isLoading}
       />
     </div>
   );
