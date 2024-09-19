@@ -6,6 +6,7 @@ import { Title } from './components/title/title';
 import { Description } from './description/description';
 import { Request } from './components/request/request';
 import { Donate } from './components/donate/donate';
+import { Leaderboard } from './components/leaderboard/leaderboard';
 
 export default function Home() {
   const { isConnected } = useAccount();
@@ -21,6 +22,7 @@ export default function Home() {
         </div>
       )}
       <Stats />
+      <Leaderboard />
     </main>
   );
 }

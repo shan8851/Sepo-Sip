@@ -25,7 +25,7 @@ export default function RootLayout({
         className={`${ibmPlexMono.className} h-full m-0 p-0 bg-neutral-900 text-slate-100`}
       >
         <Providers cookie={cookie}>
-          <div className="grid grid-rows-[auto_1fr_auto] h-screen">
+          <div className="grid grid-rows-[auto_1fr_auto] min-h-screen">
             <header className="p-6">
               <ConnectBtn />
             </header>
