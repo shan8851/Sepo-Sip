@@ -46,5 +46,4 @@ contract FaucetTest is Test {
         faucet.setPayoutAmt(0.5 ether);
         assertEq(faucet.payoutAmount(), 0.5 ether);
     }
-
 }

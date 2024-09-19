@@ -68,7 +68,7 @@ contract Faucet is Ownable, ReentrancyGuard {
         require(address(this).balance >= payoutAmount, "Insufficient balance");
         require(allowedToRequestPayout(msg.sender), "Wait time not elapsed");
 
-        (bool sent, ) = userAddress.call{value: payoutAmount}("");
+        (bool sent,) = userAddress.call{value: payoutAmount}("");
         require(sent, "Failed to send Ether");
 
         totalPayouts++;
@@ -124,7 +124,7 @@ contract Faucet is Ownable, ReentrancyGuard {
     /// @dev This function can only be called by the contract owner
     function withdrawEth() public onlyOwner {
         uint256 balance = address(this).balance;
-        (bool sent, ) = owner().call{value: balance}("");
+        (bool sent,) = owner().call{value: balance}("");
         require(sent, "Failed to send Ether");
         totalFaucetFunds = 0;
     }
