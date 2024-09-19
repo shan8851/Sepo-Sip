@@ -73,8 +73,6 @@ export const Request = () => {
     }
   }, [hash, isConfirming, isConfirmed, error]);
 
-  console.log(error, isPending);
-
   return (
     <button
       onClick={requestEth}

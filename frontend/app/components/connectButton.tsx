@@ -7,9 +7,10 @@ import {
   useChainModal,
 } from '@rainbow-me/rainbowkit';
 import { useAccount, useDisconnect } from 'wagmi';
+import { Blockie } from './blockie/blockie';
 
 export const ConnectBtn = () => {
-  const { isConnecting, isConnected, chain } = useAccount();
+  const { isConnecting, isConnected, chain, address } = useAccount();
 
   const { openConnectModal } = useConnectModal();
   const { openAccountModal } = useAccountModal();
@@ -50,10 +51,11 @@ export const ConnectBtn = () => {
   return (
     <div className="max-w-5xl w-full flex items-center justify-between">
       <div
-        className="flex justify-center items-center px-4 py-2 border border-neutral-700 bg-neutral-800/30 rounded-xl font-mono font-bold gap-x-2 cursor-pointer"
+        className="flex justify-center items-center px-4 py-2 border border-neutral-700 bg-neutral-800/30 rounded-xl gap-x-2 cursor-pointer"
         onClick={async () => openAccountModal?.()}
       >
-        <p>Account</p>
+        {address && <Blockie address={address} size={32} />}
+        {address}
       </div>
     </div>
   );
