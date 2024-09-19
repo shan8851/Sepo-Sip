@@ -8,7 +8,7 @@ const supportedChains: Chain[] = [sepolia, mainnet];
 
 export const config = getDefaultConfig({
   appName: 'SepoSip',
-  projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID!,
+  projectId: '41aca63a9d00b5d63a65b4a1387c5ef5',
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   chains: supportedChains as any,
   ssr: true,
