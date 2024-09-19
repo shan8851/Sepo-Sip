@@ -54,7 +54,7 @@ export const ConnectBtn = () => {
         className="flex justify-center items-center px-4 py-2 border border-neutral-700 bg-neutral-800/30 rounded-xl gap-x-2 cursor-pointer"
         onClick={async () => openAccountModal?.()}
       >
-        {address && <Blockie address={address} size={32} />}
+        {address && <Blockie address={address} size={24} />}
         {address}
       </div>
     </div>

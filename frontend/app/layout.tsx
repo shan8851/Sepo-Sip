@@ -40,7 +40,7 @@ export default function RootLayout({
                 <FaCoffee className="text-red-400" />
                 <p>by</p>
                 <Link
-                  className="text-red-400 hover:underline"
+                  className="text-red-400 hover:underline hover:text-red-600"
                   href="https:x.co/shan8851"
                 >
                   @Shan8851

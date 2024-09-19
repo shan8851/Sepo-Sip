@@ -60,9 +60,9 @@ export const Donate = () => {
     <button
       onClick={donate}
       disabled={isPending || isConfirming}
-      className="border border-red-400 hover:border-red-700 font-bold p-4 rounded-lg"
+      className="border border-red-400 hover:border-red-600 font-bold p-4 rounded-lg"
     >
-      {isPending || isConfirming ? 'Donating...' : 'Donate 0.1 ETH'}
+      Donate 0.1 ETH
     </button>
   );
 };

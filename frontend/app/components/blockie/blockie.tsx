@@ -22,7 +22,7 @@ export const Blockie: React.FC<BlockieProps> = ({
       src={dataUrl}
       width={size}
       height={size}
-      className={`rounded-full ${className}`}
+      className={`rounded-sm ${className}`}
       alt={`Blockie for ${address}`}
     />
   );
