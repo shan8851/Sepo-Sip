@@ -5,9 +5,10 @@ export
 
 # Variables
 CONTRACTS_DIR := contracts
+FRONTEND_DIR := frontend
 
 # Phony targets
-.PHONY: all test build deploy-local deploy-sepolia lint clean help
+.PHONY: all test build deploy-local deploy-sepolia lint clean help frontend-dev frontend-build frontend-start
 
 # Default target
 all: build
@@ -40,6 +41,20 @@ lint:
 clean:
 	@echo "Cleaning build artifacts..."
 	@forge clean -C $(CONTRACTS_DIR)
+	@cd $(FRONTEND_DIR) && npm run clean
+
+# Frontend commands
+frontend-dev:
+	@echo "Starting Next.js development server..."
+	@cd $(FRONTEND_DIR) && npm run dev
+
+frontend-build:
+	@echo "Building Next.js application..."
+	@cd $(FRONTEND_DIR) && npm run build
+
+frontend-start:
+	@echo "Starting Next.js production server..."
+	@cd $(FRONTEND_DIR) && npm start
 
 # Help command to display available commands
 help:
@@ -50,4 +65,7 @@ help:
 	@echo "  make deploy-sepolia - Deploy to Sepolia testnet"
 	@echo "  make lint           - Lint Solidity files"
 	@echo "  make clean          - Clean build artifacts"
+	@echo "  make frontend-dev   - Start Next.js development server"
+	@echo "  make frontend-build - Build Next.js application"
+	@echo "  make frontend-start - Start Next.js production server"
 	@echo "  make help           - Display this help message"
