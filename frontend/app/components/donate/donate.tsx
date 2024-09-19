@@ -54,7 +54,7 @@ export const Donate = () => {
     if (error) {
       toast.error('Transaction failed', { id: hash });
     }
-  }, [hash, isConfirming, isConfirmed, error]);
+  }, [hash, isConfirming, isConfirmed, error, fetchStats]);
 
   return (
     <button
