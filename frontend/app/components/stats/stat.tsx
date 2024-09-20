@@ -11,7 +11,7 @@ export interface IStatProps {
 }
 
 const Box: React.FC<PropsWithChildren> = ({ children }) => (
-  <div className="h-48 w-64 bg-neutral-800 flex items-center justify-center rounded-lg">
+  <div className="h-32 md:h-48 w-48 md:w-64 bg-neutral-800 flex items-center justify-center rounded-lg">
     {children}
   </div>
 );
@@ -30,16 +30,18 @@ export const Stat: React.FC<IStatProps> = (props) => {
   if (error) {
     return (
       <Box>
-        <TbFaceIdError className="text-6xl text-red" />
+        <TbFaceIdError className="text-3xl md:text-6xl text-red" />
       </Box>
     );
   }
   return (
     <Box>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 md:gap-4">
         {icon}
         <div className="flex flex-col items-center gap-2">
-          <span className="text-5xl font-bold text-red-400">{value}</span>
+          <span className="text-3xl md:text-5xl font-bold text-red-400">
+            {value}
+          </span>
           <span className="text-base leading-7">{title}</span>
         </div>
       </div>

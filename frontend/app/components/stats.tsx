@@ -19,14 +19,14 @@ export const Stats = () => {
     fetchStats();
   }, [fetchStats]);
 
-  const iconClass = 'text-6xl text-red-400';
+  const iconClass = 'text-3xl md:text-6xl text-red-400';
 
   if (error) {
     return <div>Error loading stats: {error.message}</div>;
   }
 
   return (
-    <div className="flex gap-8 justify-center">
+    <div className="flex flex-col gap-4 md:flex-row md:gap-8 justify-center">
       <Stat
         icon={<FaEthereum className={iconClass} />}
         title="Faucet Balance"

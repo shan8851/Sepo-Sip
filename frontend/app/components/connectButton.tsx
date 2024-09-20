@@ -8,6 +8,9 @@ import {
 } from '@rainbow-me/rainbowkit';
 import { useAccount, useDisconnect } from 'wagmi';
 import { Blockie } from './blockie/blockie';
+import { useScreenSize } from '../hooks/useScreensize';
+import { ScreenSize } from '../types/types';
+import { shortenAddress } from '../utils/shortenAddress';
 
 export const ConnectBtn = () => {
   const { isConnecting, isConnected, chain, address } = useAccount();
@@ -18,6 +21,9 @@ export const ConnectBtn = () => {
   const { disconnect } = useDisconnect();
 
   const isMounted = useRef(false);
+
+  const isMobile = useScreenSize() === ScreenSize.MOBILE;
+  const addressLabel = isMobile ? shortenAddress(address) : address;
 
   useEffect(() => {
     isMounted.current = true;
@@ -55,7 +61,7 @@ export const ConnectBtn = () => {
         onClick={async () => openAccountModal?.()}
       >
         {address && <Blockie address={address} size={24} />}
-        {address}
+        {addressLabel}
       </div>
     </div>
   );

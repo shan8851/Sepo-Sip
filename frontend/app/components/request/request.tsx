@@ -77,7 +77,7 @@ export const Request = () => {
     <button
       onClick={requestEth}
       disabled={!address || isPending || isConfirming}
-      className="p-4 bg-red-400 hover:bg-red-600 text-slate-900 rounded-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+      className="p-2 md:p-4 bg-red-400 hover:bg-red-600 text-slate-900 rounded-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed"
     >
       Request 0.05 ETH
     </button>

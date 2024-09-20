@@ -77,7 +77,7 @@ export const Donate = () => {
     <button
       onClick={donate}
       disabled={isPending || isConfirming}
-      className="border border-red-400 hover:border-red-600 font-bold p-4 rounded-lg"
+      className="border border-red-400 hover:border-red-600 font-bold p-2 md:p-4 rounded-lg"
     >
       Donate 0.1 ETH
     </button>
