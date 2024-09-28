@@ -22,11 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body
+        suppressHydrationWarning
         className={`${ibmPlexMono.className} h-full m-0 p-0 bg-neutral-900 text-slate-100`}
       >
         <Providers cookie={cookie}>
           <div className="grid grid-rows-[auto_1fr_auto] min-h-screen">
-            <header className="p-6">
+            <header className="h-20 flex items-center px-6">
               <ConnectBtn />
             </header>
             <main className="flex items-center justify-center p-4">

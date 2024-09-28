@@ -6,12 +6,14 @@ interface BlockieProps {
   address: string;
   size?: number;
   className?: string;
+  avatar?: string;
 }
 
 export const Blockie: React.FC<BlockieProps> = ({
   address,
   size = 40,
   className = '',
+  avatar,
 }) => {
   const dataUrl = React.useMemo(() => {
     return makeBlockie(address);
@@ -19,7 +21,7 @@ export const Blockie: React.FC<BlockieProps> = ({
 
   return (
     <Image
-      src={dataUrl}
+      src={avatar ?? dataUrl}
       width={size}
       height={size}
       className={`rounded-sm ${className}`}

@@ -6,11 +6,13 @@ import {
   useAccountModal,
   useChainModal,
 } from '@rainbow-me/rainbowkit';
-import { useAccount, useDisconnect } from 'wagmi';
+import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi';
 import { Blockie } from './blockie/blockie';
 import { useScreenSize } from '../hooks/useScreensize';
 import { ScreenSize } from '../types/types';
 import { shortenAddress } from '../utils/shortenAddress';
+import { mainnet } from 'viem/chains';
+import { normalize } from 'path';
 
 export const ConnectBtn = () => {
   const { isConnecting, isConnected, chain, address } = useAccount();
@@ -20,10 +22,24 @@ export const ConnectBtn = () => {
   const { openChainModal } = useChainModal();
   const { disconnect } = useDisconnect();
 
+  const { data: ensName } = useEnsName({
+    address: address,
+    chainId: mainnet.id,
+  });
+
+  const { data: avatar } = useEnsAvatar({
+    name: normalize(ensName ?? ''),
+    chainId: mainnet.id,
+  });
+
   const isMounted = useRef(false);
 
   const isMobile = useScreenSize() === ScreenSize.MOBILE;
-  const addressLabel = isMobile ? shortenAddress(address) : address;
+  const addressLabel = ensName
+    ? ensName
+    : isMobile
+    ? shortenAddress(address)
+    : address;
 
   useEffect(() => {
     isMounted.current = true;
@@ -60,7 +76,13 @@ export const ConnectBtn = () => {
         className="flex justify-center items-center px-4 py-2 border border-neutral-700 bg-neutral-800/30 rounded-xl gap-x-2 cursor-pointer"
         onClick={async () => openAccountModal?.()}
       >
-        {address && <Blockie address={address} size={24} />}
+        {address && (
+          <Blockie
+            avatar={avatar ?? undefined}
+            address={ensName ?? address}
+            size={24}
+          />
+        )}
         {addressLabel}
       </div>
     </div>
