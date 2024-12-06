@@ -80,7 +80,7 @@ export const Donate = () => {
   ]);
 
   return (
-    <div className="flex items-center border border-red-400 rounded">
+    <div className="flex items-center border border-red-400 rounded-lg">
       <input
         type="number"
         min="0"
@@ -88,12 +88,12 @@ export const Donate = () => {
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
         placeholder="0.05 eth"
-        className="w-32 bg-transparent p-2 focus:outline-none"
+        className="w-32 bg-transparent p-2 focus:outline-none h-full"
       />
       <button
         onClick={donate}
         disabled={isPending || isConfirming}
-        className=" font-bold p-2 rounded-lg"
+        className=" font-bold p-2  bg-red-400 hover:bg-red-600 h-full text-slate-900 rounded-r-lg disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Donate
       </button>
