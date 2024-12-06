@@ -42,7 +42,9 @@ export default function RootLayout({
                 <p>by</p>
                 <Link
                   className="text-red-400 hover:underline hover:text-red-600"
-                  href="https:x.co/shan8851"
+                  href="https://x.com/shan8851"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   @Shan8851
                 </Link>
