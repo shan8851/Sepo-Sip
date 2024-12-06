@@ -15,8 +15,8 @@ export const config = getDefaultConfig({
   storage: createStorage({
     storage: cookieStorage,
   }),
-  transports: supportedChains.reduce(
-    (obj, chain) => ({ ...obj, [chain.id]: http() }),
-    {}
-  ),
+  transports: {
+    [mainnet.id]: http(process.env.NEXT_PUBLIC_MAINNET_RPC_URL),
+    [sepolia.id]: http(process.env.NEXT_PUBLIC_SEPOLIA_RPC_URL),
+  },
 });
