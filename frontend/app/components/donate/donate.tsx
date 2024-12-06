@@ -80,7 +80,7 @@ export const Donate = () => {
   ]);
 
   return (
-    <div className="flex items-center border border-red-400 rounded-lg">
+    <div className="flex items-center border rounded-lg">
       <input
         type="number"
         min="0"
